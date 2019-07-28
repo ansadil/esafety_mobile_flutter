@@ -1,0 +1,69 @@
+import 'package:esafety/ui/screen/HomeScreen/HomeScreen.dart';
+import 'package:esafety/ui/screen/HomeScreen/widgts/Home_widget.dart';
+import 'package:flutter/material.dart';
+
+class CardDataWidget extends StatelessWidget {
+
+
+  final Icon icon;
+  final String label;
+  final int index;
+  CardDataWidget(this.label, this.icon,this.index);
+
+  @override
+  Widget build(BuildContext context) {
+           final HomeScreen widget = context.ancestorWidgetOfExactType(HomeScreen);
+                final  state = widget?.myState;
+    // var state = StateContainer.of(context).state;
+
+
+    return Stack(
+      children: <Widget>[
+        SizedBox(
+          width: 100.0,
+          height: 100.0,
+          child: Card(
+            elevation: 5,
+            margin: const EdgeInsets.all(10.0),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  icon,
+                  Padding(
+                    padding: EdgeInsets.only(top: 2),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          label,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          style: TextStyle(fontSize: 10.0),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        new Positioned.fill(
+            child: new Material(
+                color: Colors.transparent,
+                child:Container(
+                  margin: const EdgeInsets.all(10.0),
+                  child:new InkWell(
+                  splashColor: Colors.amber[200],
+                 
+                  onTap: ()  {
+                    print(index);
+                    state.onTabTapped(this.index);
+                    
+                  },
+                ) ,) ))
+      ],
+    );
+  }
+}
