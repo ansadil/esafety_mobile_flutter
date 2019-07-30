@@ -1,12 +1,17 @@
 import 'package:esafety/ui/screen/HomeScreen/HomeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:esafety/utils/auth_service.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:esafety/store/auth/auth.dart'; // Import the Counter
+import 'package:provider/provider.dart';
+
 
 class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
          final HomeScreen widget = context.ancestorWidgetOfExactType(HomeScreen);
                 final  state = widget?.myState;
+                 final auth = Provider.of<Auth>(context);
+                
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -29,21 +34,21 @@ class ProfileWidget extends StatelessWidget {
               tag: 'hero',
               child: CircleAvatar(
                 backgroundColor: Colors.transparent,
-                backgroundImage:NetworkImage(auth_user?.avatarPath.toString()),
+                backgroundImage:NetworkImage(auth.user?.avatarPath.toString()),
                 radius: 60.0,
               ),
             ),
           ),
-          Text(auth_user?.name.toString()),
-          Text(auth_user?.email.toString()),
-          Text(auth_user?.id.toString()),
+          Text(auth.user?.name.toString()),
+          Text(auth.user?.email.toString()),
+          Text(auth.user?.id.toString()),
           RaisedButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
             child: Text('Logout'),
             onPressed: () async {
-              removeAuth().then(
+              auth.removeAuth().then(
                   (r) => {Navigator.of(context).pushReplacementNamed('/')});
             },
           ),
@@ -51,7 +56,12 @@ class ProfileWidget extends StatelessWidget {
             child: Text("back") ,onPressed: (){
                 state.onTabTapped(0);
             },
-          )
+          ),
+          Observer(builder: (_) =>Text("${auth.token}")),
+          RaisedButton(onPressed: (){
+            auth.getAuthToken();
+          },child: Text("get auth"),)
+          
         ],
       ),
     );

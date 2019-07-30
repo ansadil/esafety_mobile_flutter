@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:esafety/utils/auth_service.dart';
+// import 'package:esafety/utils/auth_service.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:esafety/store/auth/auth.dart'; // Import the Counter
+import 'package:provider/provider.dart';
 
+final auth = Auth();
 class SplashScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -15,12 +19,12 @@ class SplashScreenState extends State<SplashScreen> {
   final int splashDuration = 2;
   
   startTime() async {
-   await getAuthToken();
+    
     return Timer(
         Duration(seconds: splashDuration),
             () async {
               SystemChannels.textInput.invokeMethod('TextInput.hide');
-              await checkIfAuthenticated().then( (success) {
+              await auth.checkIfAuthenticated().then( (success) {
                  print(success);
                 if (success) {
                  
@@ -40,6 +44,8 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+     final auth = Provider.of<Auth>(context);
+                
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(

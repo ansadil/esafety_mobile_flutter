@@ -1,5 +1,4 @@
 import 'package:esafety/ui/screen/HomeScreen/HomeScreen.dart';
-import 'package:esafety/ui/screen/HomeScreen/widgts/Home_widget.dart';
 import 'package:flutter/material.dart';
 
 class CardDataWidget extends StatelessWidget {

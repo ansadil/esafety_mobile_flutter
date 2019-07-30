@@ -11,7 +11,6 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final container = StateContainer.of(context);
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
