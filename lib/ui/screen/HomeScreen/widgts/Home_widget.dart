@@ -1,8 +1,10 @@
+import 'package:esafety/ui/screen/HomeScreen/widgts/tapped.dart';
 import 'package:flutter/material.dart';
 import 'package:esafety/ui/screen/HomeScreen/widgts/CardData_widget.dart';
-
+import 'package:esafety/ui/screen/HomeScreen/HomeScreen.dart';
+import 'package:provider/provider.dart';
 class HomeWidget extends StatefulWidget {
-  @override
+   @override
   _HomeWidgetState createState() => _HomeWidgetState();
 }
 
@@ -11,6 +13,7 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
+   final tapped = Provider.of<Tapped>(context);
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -53,9 +56,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                   ),
                 )),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              new CardDataWidget("SafetyEquipment", Icon(Icons.border_top,color: Colors.orange,),0),
-              new CardDataWidget("Tasks", Icon(Icons.beenhere,color: Colors.orange,),1),
-              new CardDataWidget("Profile", Icon(Icons.person,color: Colors.orange,),2),
+              new CardDataWidget("SafetyEquipment", Icon(Icons.border_top,color: Colors.orange), () => {
+                Navigator.of(context).pushReplacementNamed('/safty_equipment')
+              }),
+              new CardDataWidget("Tasks", Icon(Icons.beenhere,color: Colors.orange), () => tapped.goto(1)),
+              new CardDataWidget("Profile", Icon(Icons.person,color: Colors.orange), () => tapped.goto(2)),
             ]),
             
           ],

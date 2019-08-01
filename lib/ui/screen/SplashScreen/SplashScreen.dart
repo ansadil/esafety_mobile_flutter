@@ -6,7 +6,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:esafety/store/auth/auth.dart'; // Import the Counter
 import 'package:provider/provider.dart';
 
-final auth = Auth();
 class SplashScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -18,13 +17,13 @@ class SplashScreenState extends State<SplashScreen> {
   
   final int splashDuration = 2;
   
-  startTime() async {
+  startTime(context) async {
     
     return Timer(
         Duration(seconds: splashDuration),
             () async {
               SystemChannels.textInput.invokeMethod('TextInput.hide');
-              await auth.checkIfAuthenticated().then( (success) {
+              await Provider.of<Auth>(context).checkIfAuthenticated().then( (success) {
                  print(success);
                 if (success) {
                  
@@ -39,7 +38,7 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    startTime();
+    startTime(context);
   }
 
   @override

@@ -75,8 +75,8 @@ abstract class _Auth with Store {
   @action
   Future<bool>checkIfAuthenticated() async{
     
-    //  await getAuthToken();
-    // await getAuthUser();
+     await getAuthToken();
+    await getAuthUser();
     
   if (token == null) {
     return false;
@@ -88,7 +88,7 @@ abstract class _Auth with Store {
   Future<String> getAuthToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token = prefs.getString("api_token");
-    print(">>>>>>>>"+token);
+    // print(">>>>>>>>"+token);
     if (token == null) {
       return null;
     }

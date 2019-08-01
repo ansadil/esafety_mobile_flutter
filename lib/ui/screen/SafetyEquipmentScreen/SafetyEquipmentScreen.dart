@@ -1,58 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:esafety/ui/screen/HomeScreen/widgts/Home_widget.dart';
-import 'package:esafety/ui/screen/HomeScreen/widgts/Task_widget.dart';
-import 'package:esafety/ui/screen/HomeScreen/widgts/Profile_widgt.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:esafety/store/safety_equipment/safety_equipment.dart';
+
+final safety_equipment = SafetyEquipment(); // Instantiate the store
+
 class SafetyEquipmentScreen extends StatefulWidget {
   @override
-  _SafetyEquipmentScreenState createState() =>  _SafetyEquipmentScreenState();
+  _SafetyEquipmentScreenState createState() => _SafetyEquipmentScreenState();
 }
+
 class _SafetyEquipmentScreenState extends State<SafetyEquipmentScreen> {
-  int _currentIndex = 0;
-
-  final List<Widget> _children = [
-
-   ProfileWidget()
- ];
-  void onTabTapped(int index) {
-   setState(() {
-     _currentIndex = index;
-   });
- }
   @override
   void initState() {
     super.initState();
+    safety_equipment.getDataFromApi("");
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-      appBar: AppBar(title: Text("Safety Equipment", style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.amber[200],
-                iconTheme: IconThemeData(color: Colors.black),
-                elevation:
-                Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 6.0,
-      ),
-      body: _children[_currentIndex], 
-      bottomNavigationBar: BottomNavigationBar(
-       onTap: onTabTapped, 
-       currentIndex: _currentIndex,// this will be set when a new tab is tapped
-       items: [
-         BottomNavigationBarItem(
-           icon: new Icon(Icons.home),
-           title: new Text('Home'),
-         ),
-         BottomNavigationBarItem(
-           icon: new Icon(Icons.beenhere),
-           title: new Text('Tasks'),
-         ),
-         BottomNavigationBarItem(
-           icon: Icon(Icons.person),
-           title: Text('Profile')
-         )
-       ],
-     ),
-    );
-
+        appBar: AppBar(
+          title: Text(
+            "Safety Equipment",
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Backe'),
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed('/home');
+              },
+            )
+          ],
+          backgroundColor: Colors.amber[200],
+          iconTheme: IconThemeData(color: Colors.black),
+          elevation:
+              Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 6.0,
+        ),
+        body: Container(
+          child: Column(
+            children: <Widget>[
+              FlatButton(child: Text("Get"),onPressed: (){
+                safety_equipment.getDataFromApi(20);
+              },),
+              ListView.builder(
+                itemCount: safety_equipment.data==null? 0:safety_equipment.data.length,
+                itemBuilder: (BuildContext context,int index){
+                  return Container(child: Center(child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    
+                  ],),),);
+                },
+              )
+             
+            ],
+          ),
+        ));
   }
 }

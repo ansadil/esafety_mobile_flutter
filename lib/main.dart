@@ -3,6 +3,7 @@ import 'package:esafety/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:esafety/keys.dart';
 import 'package:esafety/store/auth/auth.dart'; // Import the Counter
+import 'package:esafety/ui/screen/HomeScreen/widgts/tapped.dart';
 
 
 void main() async {
@@ -24,7 +25,8 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<Auth>.value(value: Auth(),)
+        Provider<Auth>.value(value: Auth(),),
+          ChangeNotifierProvider(builder: (_) => Tapped()),
       ],
       child: MaterialApp(
         title: 'eSafety App',
@@ -33,7 +35,7 @@ class _AppState extends State<App> {
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        initialRoute: '/login',
+        initialRoute: '/',
         routes: routes,
       ),
     );

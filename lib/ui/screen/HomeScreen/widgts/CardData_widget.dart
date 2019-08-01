@@ -6,13 +6,13 @@ class CardDataWidget extends StatelessWidget {
 
   final Icon icon;
   final String label;
-  final int index;
-  CardDataWidget(this.label, this.icon,this.index);
+  VoidCallback  coleback;
+
+  CardDataWidget(this.label, this.icon,this.coleback);
 
   @override
   Widget build(BuildContext context) {
-           final HomeScreen widget = context.ancestorWidgetOfExactType(HomeScreen);
-                final  state = widget?.myState;
+          
     // var state = StateContainer.of(context).state;
 
 
@@ -56,11 +56,7 @@ class CardDataWidget extends StatelessWidget {
                   child:new InkWell(
                   splashColor: Colors.amber[200],
                  
-                  onTap: ()  {
-                    print(index);
-                    state.onTabTapped(this.index);
-                    
-                  },
+                  onTap: coleback,
                 ) ,) ))
       ],
     );

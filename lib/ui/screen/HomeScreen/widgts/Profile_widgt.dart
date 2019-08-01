@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:esafety/store/auth/auth.dart'; // Import the Counter
 import 'package:provider/provider.dart';
+import 'package:esafety/ui/screen/HomeScreen/widgts/tapped.dart';
 
 
 class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-         final HomeScreen widget = context.ancestorWidgetOfExactType(HomeScreen);
-                final  state = widget?.myState;
+
                  final auth = Provider.of<Auth>(context);
-                
+                 final tapped = Provider.of<Tapped>(context);
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -54,7 +54,8 @@ class ProfileWidget extends StatelessWidget {
           ),
           RaisedButton(
             child: Text("back") ,onPressed: (){
-                state.onTabTapped(0);
+                
+                  tapped.goto(0);
             },
           ),
           Observer(builder: (_) =>Text("${auth.token}")),

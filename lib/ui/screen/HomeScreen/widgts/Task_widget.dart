@@ -1,13 +1,12 @@
-import 'package:esafety/ui/screen/HomeScreen/HomeScreen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:esafety/ui/screen/HomeScreen/widgts/tapped.dart';
 class TaskWidget extends StatelessWidget {
  
 
  @override
  Widget build(BuildContext context) {
-   final HomeScreen widget = context.ancestorWidgetOfExactType(HomeScreen);
-                final  state = widget?.myState;
+              final tapped = Provider.of<Tapped>(context);
    return Container(
      decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -31,8 +30,8 @@ class TaskWidget extends StatelessWidget {
             ),
         ),
         FlatButton(onPressed: (){
-          state.onTabTapped(0);
-          
+         
+          tapped.goto(0);
         },
         child: Text("back"),)
      ],),),
