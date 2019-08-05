@@ -62,18 +62,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         onPressed: () async {
           //  WidgKeys.navKey.currentState.pushReplacementNamed('/');
-          String m;
           bool r = await getAuthFromApi(
               _emailController.text, _passwordController.text);
           if (r) {
-             Navigator.of(context).pushReplacementNamed('/');
+            Navigator.of(context).pushReplacementNamed('/');
           } else {
-             scaffoldKey.currentState
-              .showSnackBar(new SnackBar(content: new Text("Can not authenticate")));
+            scaffoldKey.currentState.showSnackBar(
+                new SnackBar(content: new Text("Can not authenticate")));
           }
-
-         
-         
         },
         padding: EdgeInsets.all(12),
         color: Color(0xFFE3E375),
@@ -84,56 +80,69 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         appBar: null,
         key: scaffoldKey,
-        body: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              stops: [0.2, 0.1, 0.8, 0.8],
-              colors: [
-                // Colors are easy thanks to Flutter's Colors class.
-                Colors.amber[800],
-                Colors.orange[700],
-                Colors.red[600],
-                Colors.amber[400],
-              ],
-            )),
-            child: new Center(
-                child: Column(children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 50),
-                child: _logo,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: 50.0, bottom: 5.0, left: 25.0, right: 25.0),
-                child: Card(
-                    elevation: 2.0,
-                    color: Colors.yellow[50],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+        body: SizedBox.expand(
+          child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                stops: [0.2, 0.1, 0.8, 0.8],
+                colors: [
+                  // Colors are easy thanks to Flutter's Colors class.
+                  Colors.amber[800],
+                  Colors.orange[700],
+                  Colors.red[600],
+                  Colors.amber[400],
+                ],
+              )),
+              child: ListView(children: <Widget>[
+                new Center(
+                  child: Column(children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(top: 50),
+                      child: _logo,
                     ),
-                    child: Container(
-                        width: 350.0,
-                        height: 230.0,
-                        child: Column(children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: 5.0, bottom: 5.0, left: 25.0, right: 25.0),
-                            child: _email,
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 20.0, bottom: 5.0, left: 20.0, right: 20.0),
+                      child: Card( 
+                          elevation: 2.0,
+                          color: Colors.yellow[50],
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: 5.0, bottom: 5.0, left: 25.0, right: 25.0),
-                            child: _password,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: 5.0, bottom: 5.0, left: 25.0, right: 25.0),
-                            child: _loginButton,
-                          )
-                        ]))),
-              ),
-            ]))));
+                          child: Container(
+                              width: double.infinity,
+                              child: Column(children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 5.0,
+                                      bottom: 5.0,
+                                      left: 25.0,
+                                      right: 25.0),
+                                  child: _email,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 5.0,
+                                      bottom: 5.0,
+                                      left: 25.0,
+                                      right: 25.0),
+                                  child: _password,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 5.0,
+                                      bottom: 5.0,
+                                      left: 25.0,
+                                      right: 25.0),
+                                  child: _loginButton,
+                                )
+                              ]))),
+                    ),
+                  ]),
+                )
+              ])),
+        ));
   }
 }

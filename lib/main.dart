@@ -29,6 +29,7 @@ class _AppState extends State<App> {
           ChangeNotifierProvider(builder: (_) => Tapped()),
       ],
       child: MaterialApp(
+        
         title: 'eSafety App',
         debugShowCheckedModeBanner: false,
         navigatorKey: AppKeys.navKey,

@@ -6,6 +6,8 @@ class CardDataWidget extends StatelessWidget {
 
   final Icon icon;
   final String label;
+  AnimationController controller;
+
   VoidCallback  coleback;
 
   CardDataWidget(this.label, this.icon,this.coleback);

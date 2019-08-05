@@ -14,9 +14,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class SplashScreenState extends State<SplashScreen> {
-  
+  Animation animation;
+   AnimationController _controller;
+
+
   final int splashDuration = 2;
-  
   startTime(context) async {
     
     return Timer(
@@ -24,9 +26,7 @@ class SplashScreenState extends State<SplashScreen> {
             () async {
               SystemChannels.textInput.invokeMethod('TextInput.hide');
               await Provider.of<Auth>(context).checkIfAuthenticated().then( (success) {
-                 print(success);
                 if (success) {
-                 
                   Navigator.of(context).pushReplacementNamed('/home');
                 } else {
                   Navigator.of(context).pushReplacementNamed('/login');
@@ -35,10 +35,14 @@ class SplashScreenState extends State<SplashScreen> {
         }
     );
   }
+  
   @override
   void initState() {
     super.initState();
+    // _controller = AnimationController( vsync: null, duration: Duration(microseconds: 500));
+    // animation = new CurvedAnimation( curve: Curves.easeIn);
     startTime(context);
+    
   }
 
   @override
