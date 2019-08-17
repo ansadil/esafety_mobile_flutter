@@ -1,0 +1,53 @@
+{
+    "user_id":"معرف المستخدم",
+    "user_name":"اسم المستخدم",
+    "password":"كلمة المرور",
+    "email":"البريد الإلكتروني",
+    
+
+    "show_less":"طي",
+    "show_all":"عرض الكل",
+
+    "scan_qr":"مسح الكود",
+    "search_input_hint_text":"مالذي تريد البحث عنه?",
+    "can_not_authenticate":"فشل في تسجيل الدخول",
+
+    "user_profile":"الملف الشخصي",
+    "setting":"الإعدادات",
+    "signoff":"تسحيل خروج",
+    "login":"تسجيل دخول",
+    "logout":"تسجيل خروج",
+    "close":"إغلاق",
+    "exit":"خروج",
+    "send":"إرسال",
+    "print":"طباعة",
+    "ok":"تم",
+    "cancel":"إلغاء",
+    "yes":"نعم",
+    "no":"لا",
+    "help":"مساعدة",
+    "save":"حفظ",
+    "dnotsave":"لا تحفظ",
+    "download":"تحميل",
+    "opne":"فتح",
+
+    
+    "establishments":"المنشآت",
+    "establishment":"المنشأة",
+    "branchs":"الفروع",
+    "branch":"الفرع",
+    "buildings":"المباني",
+    "building":"المبنى",
+    "safety_equipments":"أدوات السلامة",
+    "safety_equipment":"أدات السلامة",
+    "inspection_tasks":"مهام الفحص",
+    "reports":"التقارير",
+    "alarm":"التحذيرات",
+
+    "number_of_branchs":"عدد الفروع",
+    "number_of_buildings":"عدد المباني",
+    "number_of_safety_equipments":"عدد أدوات السلامة",
+
+    
+    "":""
+}

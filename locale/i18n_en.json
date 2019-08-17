@@ -1,0 +1,54 @@
+{
+    "user_id":"User ID",
+    "user_name":"User Name",
+    "password":"Password",
+    "email":"E-mail",
+
+    "show_less":"Show Less",
+    "show_all":"Show All" ,
+
+    "scan_qr":"Scan QR",
+
+    "search_input_hint_text":"What're you looking for?",
+    "can_not_authenticate":"Can not authenticate",
+
+    "user_profile":"User profile",
+    "setting":"Setting",
+    "signoff":"Sign off",
+    "login":"Login",
+    "logout":"Logout",
+    "close":"Close",
+    "exit":"Exit",
+    "send":"Send",
+    "print":"Print",
+    "ok":"Ok",
+    "cancel":"Cancel",
+    "yes":"Yes",
+    "no":"No",
+    "help":"Help",
+    "save":"Save",
+    "dnotsave":"Don't Save",
+    "download":"Download",
+    "opne":"Open",
+
+    "establishments":"Establishments",
+    "establishment":"Establishment",
+    "branchs":"Branchs",
+    "branch":"Branch",
+    "buildings":"Buildings",
+    "building":"Building",
+    "safety_equipments":"Safety Equipments",
+    "safety_equipment":"Safety Equipment",
+    "inspection_tasks":"Inspection tasks",
+    "reports":"Reports",
+    "alarm":"Alarm",
+
+ 
+    "number_of_branchs":"Number of branchs",
+    "number_of_buildings":"Number of buildings",
+    "number_of_safety_equipments":"Number of safety equipments",
+
+
+    "":""
+
+}
