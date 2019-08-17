@@ -2,7 +2,9 @@ import 'package:mobx/mobx.dart';
 import 'dart:convert';
 import 'package:esafety/data/network_common.dart';
 import 'package:json_annotation/json_annotation.dart';
-
+import 'package:esafety/store/branch_building/branch_building.dart';
+import 'package:esafety/store/establishment/establishment.dart';
+import 'package:esafety/store/establishment_branch/establishment_branch.dart';
 // Include generated file
 part 'safety_equipment.g.dart';
 // This is the class used by rest of your codebase
@@ -32,7 +34,9 @@ abstract class _SafetyEquipment with Store {
   @observable  int buildingId;
   @observable  int id;
   @observable  bool state=false;
-
+  @observable BranchBuilding branchBuilding;
+  @observable Establishment establishment;
+  @observable EstablishmentBranch establishment_branch;
 
   String url = "safety_equipment/";
 @action Future<bool> getDataFromApi(String equipmentID) async => await NetworkCommon()
@@ -57,7 +61,9 @@ abstract class _SafetyEquipment with Store {
     classId = json['safety_equipment_types']['classId'];
     buildingId = json['buildings_equipment']['buildingId'];
     id = json['id'] ;
-    
+     branchBuilding =  BranchBuilding.fromJson(json['branch_building']);
+     establishment_branch =  EstablishmentBranch.fromJson(json['branch_building']['establishment_branch']);
+     establishment =  Establishment.fromJson(json['branch_building']['establishment_branch']['establishment']);
     state=true;
       return state;
     }).catchError((e) {

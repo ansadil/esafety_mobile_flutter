@@ -24,6 +24,17 @@ SafetyEquipment _$SafetyEquipmentFromJson(Map<String, dynamic> json) {
     ..buildingId = json['buildingId'] as int
     ..id = json['id'] as int
     ..state = json['state'] as bool
+    ..branchBuilding = json['branchBuilding'] == null
+        ? null
+        : BranchBuilding.fromJson(
+            json['branchBuilding'] as Map<String, dynamic>)
+    ..establishment = json['establishment'] == null
+        ? null
+        : Establishment.fromJson(json['establishment'] as Map<String, dynamic>)
+    ..establishment_branch = json['establishment_branch'] == null
+        ? null
+        : EstablishmentBranch.fromJson(
+            json['establishment_branch'] as Map<String, dynamic>)
     ..url = json['url'] as String;
 }
 
@@ -45,6 +56,9 @@ Map<String, dynamic> _$SafetyEquipmentToJson(SafetyEquipment instance) =>
       'buildingId': instance.buildingId,
       'id': instance.id,
       'state': instance.state,
+      'branchBuilding': instance.branchBuilding,
+      'establishment': instance.establishment,
+      'establishment_branch': instance.establishment_branch,
       'url': instance.url,
     };
 
@@ -335,6 +349,60 @@ mixin _$SafetyEquipment on _SafetyEquipment, Store {
       super.state = value;
       _$stateAtom.reportChanged();
     }, _$stateAtom, name: '${_$stateAtom.name}_set');
+  }
+
+  final _$branchBuildingAtom = Atom(name: '_SafetyEquipment.branchBuilding');
+
+  @override
+  BranchBuilding get branchBuilding {
+    _$branchBuildingAtom.context.enforceReadPolicy(_$branchBuildingAtom);
+    _$branchBuildingAtom.reportObserved();
+    return super.branchBuilding;
+  }
+
+  @override
+  set branchBuilding(BranchBuilding value) {
+    _$branchBuildingAtom.context.conditionallyRunInAction(() {
+      super.branchBuilding = value;
+      _$branchBuildingAtom.reportChanged();
+    }, _$branchBuildingAtom, name: '${_$branchBuildingAtom.name}_set');
+  }
+
+  final _$establishmentAtom = Atom(name: '_SafetyEquipment.establishment');
+
+  @override
+  Establishment get establishment {
+    _$establishmentAtom.context.enforceReadPolicy(_$establishmentAtom);
+    _$establishmentAtom.reportObserved();
+    return super.establishment;
+  }
+
+  @override
+  set establishment(Establishment value) {
+    _$establishmentAtom.context.conditionallyRunInAction(() {
+      super.establishment = value;
+      _$establishmentAtom.reportChanged();
+    }, _$establishmentAtom, name: '${_$establishmentAtom.name}_set');
+  }
+
+  final _$establishment_branchAtom =
+      Atom(name: '_SafetyEquipment.establishment_branch');
+
+  @override
+  EstablishmentBranch get establishment_branch {
+    _$establishment_branchAtom.context
+        .enforceReadPolicy(_$establishment_branchAtom);
+    _$establishment_branchAtom.reportObserved();
+    return super.establishment_branch;
+  }
+
+  @override
+  set establishment_branch(EstablishmentBranch value) {
+    _$establishment_branchAtom.context.conditionallyRunInAction(() {
+      super.establishment_branch = value;
+      _$establishment_branchAtom.reportChanged();
+    }, _$establishment_branchAtom,
+        name: '${_$establishment_branchAtom.name}_set');
   }
 
   final _$getDataFromApiAsyncAction = AsyncAction('getDataFromApi');
