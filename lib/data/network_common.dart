@@ -60,7 +60,7 @@ class NetworkCommon {
       if (lang != null) {
         options.headers["Accept-Language"] = lang;
       }
-
+       options.headers["Accept"] = "application/json";
       // print requests
       print("Pre request:${options.method},${options.baseUrl}${options.path}");
       print("Pre request:${options.headers.toString()}");
