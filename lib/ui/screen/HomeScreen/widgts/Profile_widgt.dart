@@ -49,7 +49,7 @@ class ProfileWidget extends StatelessWidget {
             child: Text('Logout'),
             onPressed: () async {
               auth.removeAuth().then(
-                  (r) => {Navigator.of(context).pushReplacementNamed('/')});
+                  (r) => {Navigator.of(context).pushReplacementNamed('ROOT')});
             },
           ),
           RaisedButton(
