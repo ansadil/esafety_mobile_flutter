@@ -47,15 +47,15 @@ mixin _$QrScan on _QrScan, Store {
       AsyncAction('startBarcodeScanStream');
 
   @override
-  Future startBarcodeScanStream() {
+  Future startBarcodeScanStream(dynamic context) {
     return _$startBarcodeScanStreamAsyncAction
-        .run(() => super.startBarcodeScanStream());
+        .run(() => super.startBarcodeScanStream(context));
   }
 
   final _$scanAsyncAction = AsyncAction('scan');
 
   @override
-  Future<String> scan() {
-    return _$scanAsyncAction.run(() => super.scan());
+  Future<String> scan(dynamic context) {
+    return _$scanAsyncAction.run(() => super.scan(context));
   }
 }
