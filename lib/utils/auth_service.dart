@@ -62,9 +62,7 @@ Future<bool> getAuthFromApi(String email, String password) async =>
         .dio
         .post('login', data: {'email': email, 'password': password}).then((d) async {
       var results = new NetworkCommon().decodeResp(d);
-      
        auth_user  = new User.fromJson(results['success']['user']);
-      print('R>'+ json.encode(auth_user));
       await saveAuthUser(auth_user.toJson().toString());
       if(await saveAuthToken(results['success']['token'])){
         return true;
