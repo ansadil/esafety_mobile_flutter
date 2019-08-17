@@ -14,7 +14,7 @@ description: eSafety App
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -29,11 +29,16 @@ dependencies:
   dio: ^2.1.10
   alice: ^0.0.6
   mobx: ^0.3.5
+  cached_network_image: ^1.1.1
   flutter_mobx: ^0.3.0+1
   json_serializable: ^3.1.0
   provider: ^3.0.0+1
-  flutter_svg: ^0.14.0
   flutter_barcode_scanner: ^0.1.4
+  flutter_localizations:
+    sdk: flutter
+  flare_flutter:
+    path: ../flare_flutter
+
 
 
 
@@ -57,9 +62,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+   - assets/
    - assets/images/
    - assets/images/icons/
    - assets/images/background/
+   - locale/i18n_ar.json
+   - locale/i18n_en.json
+   - assets/animations/
+   - assets/load1.flr
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -73,14 +83,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Poppins
+    - family: Droid Arabic Kufi
       fonts:
-        - asset: assets/fonts/Poppins-SemiBold.ttf
-          weight: 600
-  #         style: italic
-    - family: Faster One
+        - asset: assets/fonts/ArbFONTS-Droid Arabic Kufi.ttf
+
+    - family: Droid Arabic Kufi Bold
       fonts:
-        - asset: assets/fonts/FasterOne-Regular.ttf
-          weight: 600
+        - asset: assets/fonts/ArbFONTS-Droid Arabic Kufi Bold.ttf
+
+    - family: JF Flat
+      fonts:
+        - asset: assets/fonts/ArbFONTS-JF-Flat-Regular.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
