@@ -74,7 +74,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     "معدات السلامة",
                     Icon(Icons.border_top, color: Colors.orange),
                     () =>
-                        {Navigator.of(context).pushNamed('/safty_equipment')}),
+                        {Navigator.of(context).pushNamed('SAFTY_EQUIPMENT')}),
                 new CardDataWidget(
                     "المهام",
                     Icon(Icons.beenhere, color: Colors.orange),
